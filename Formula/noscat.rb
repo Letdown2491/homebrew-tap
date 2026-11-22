@@ -1,7 +1,3 @@
-# Homebrew formula template for the Letdown2491 tap (homebrew-tap).
-# The release workflow fills the version and sha256 placeholders and uploads
-# the generated formula (noscat.rb) as a release asset; copy it into the tap
-# repo: https://github.com/Letdown2491/homebrew-tap (Formula/noscat.rb).
 class Noscat < Formula
   desc "Like netcat, but over a Nostr-native mesh: npub-addressed tunnels, no root, no accounts"
   homepage "https://github.com/Letdown2491/noscat"
@@ -14,6 +10,17 @@ class Noscat < Formula
     else
       url "https://github.com/Letdown2491/noscat/releases/download/v#{version}/noscat-v#{version}-x86_64-apple-darwin.tar.gz"
       sha256 "77d71959ff7e6fcc7af15e773736fec58b52734aaf8684cdd56ff803de30c45f"
+    end
+  end
+
+  # The Linux binaries are static musl builds: no runtime deps on any distro.
+  on_linux do
+    if Hardware::CPU.intel?
+      url "https://github.com/Letdown2491/noscat/releases/download/v#{version}/noscat-v#{version}-x86_64-unknown-linux-musl.tar.gz"
+      sha256 "6c2bd680ac5303e85d0eb10783c009b5d26ec529ab0c52a69526f0f615abe0b4"
+    else
+      url "https://github.com/Letdown2491/noscat/releases/download/v#{version}/noscat-v#{version}-aarch64-unknown-linux-musl.tar.gz"
+      sha256 "6f2cd025ee1717de2f72dd3c5935610687b535c62d240e3f648c72fb7d0be3b8"
     end
   end
 
