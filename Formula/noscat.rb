@@ -5,15 +5,15 @@
 class Noscat < Formula
   desc "Like netcat, but over your own device mesh: npub-addressed, end-to-end encrypted, no root, no accounts"
   homepage "https://github.com/Letdown2491/noscat"
-  version "0.7.0"
+  version "0.7.1"
 
   on_macos do
     if Hardware::CPU.arm?
       url "https://github.com/Letdown2491/noscat/releases/download/v#{version}/noscat-v#{version}-aarch64-apple-darwin.tar.gz"
-      sha256 "a18856c098814274d57ccaeb036d05a26982acdd1743017a68865c4e1c1b0cb1"
+      sha256 "04f910c713a7f59b51a161299c93ad9b29b17c0c8f2557cd665b8f6f0ebe2e71"
     else
       url "https://github.com/Letdown2491/noscat/releases/download/v#{version}/noscat-v#{version}-x86_64-apple-darwin.tar.gz"
-      sha256 "c7ac00737019b98baec1970d9b525cdce8b61728d8a2914423b8b1e7515ec14b"
+      sha256 "d5dfc792d0b2f1583583d8d6bf27ba7981f962a5b925fa6c4fe8b306ae6b0a6b"
     end
   end
 
@@ -21,19 +21,19 @@ class Noscat < Formula
   on_linux do
     if Hardware::CPU.intel?
       url "https://github.com/Letdown2491/noscat/releases/download/v#{version}/noscat-v#{version}-x86_64-unknown-linux-musl.tar.gz"
-      sha256 "d31cfe94bebdf0b651e57ffadf3437089a8c66fb0c1023e906d72fa6f4ddcdf9"
+      sha256 "1efe8126d4d0f954ddbae35bbd992c042c1914cbb20dc694530a4a385aca3307"
     else
       url "https://github.com/Letdown2491/noscat/releases/download/v#{version}/noscat-v#{version}-aarch64-unknown-linux-musl.tar.gz"
-      sha256 "88a9c6aa60ef74f37a8c83187d094a8b345cf83aa02fc3a02bdc23781104c526"
+      sha256 "d41ad3740069276678c653de877a7d5aa9e7075239183ed24a89057e7daec2ce"
     end
   end
 
   # Linux bottles pour without a C toolchain (the binary is static musl);
   # macOS Homebrew always has CLT, so plain-URL installs are fine there.
   bottle do
-    root_url "https://github.com/Letdown2491/noscat/releases/download/v0.7.0"
-    sha256 cellar: :any_skip_relocation, x86_64_linux: "147d26f2df3bb2c848a04d5f595bc904c93abd3059cc18d436611973407af59c"
-    sha256 cellar: :any_skip_relocation, arm64_linux: "91a938799f1196ed49b0742b54d819dcbbcf972997dee3019fabeec991c953ea"
+    root_url "https://github.com/Letdown2491/noscat/releases/download/v0.7.1"
+    sha256 cellar: :any_skip_relocation, x86_64_linux: "78ec1c8bdf6c262f769fe09550973fa2e06cfa5250fd80ed325515fe8e953118"
+    sha256 cellar: :any_skip_relocation, arm64_linux: "d14013df3c0e53d0537d01860c1aa35a05d6b4a9305d6d3aca4b7483d31bb6a5"
   end
 
   def install
